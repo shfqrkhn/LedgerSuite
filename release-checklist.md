@@ -1,0 +1,52 @@
+# Release Checklist (RC)
+
+- [x] App shell boots offline after first load
+- [x] Icons loaded from `.resources`
+- [x] Version sync (`package.json`, `README.md`, UI footer)
+- [x] Version sync ledger enforcement (`tasks.json`, `quality.json`)
+- [x] Verify gate enforces unique task IDs in `tasks.json`
+- [x] Verify gate enforces task schema validity in `tasks.json`
+- [x] Verify gate enforces schema validity in `quality.json`
+- [x] Verify gate requires migration note entry for current version
+- [x] Verify gate requires latest migration heading to match current version
+- [x] Verify gate requires migration headings to stay in descending semver order
+- [x] IndexedDB schema v2 bootstraps and migrates safely
+- [x] Decision memo + case analysis wedge operational
+- [x] JSON snapshot export implemented
+- [x] Deterministic case-bundle ordering for render/export/print
+- [x] Case-bundle IndexedDB reads are parallelized for lower UI latency
+- [x] ZIP snapshot export/import implemented
+- [x] ZIP import integrity guards (size/flags/CRC/truncation) implemented
+- [x] Import type and malformed ZIP rejection guards implemented
+- [x] Unsafe ZIP entry-path rejection implemented and acceptance-tested
+- [x] Pre-read file size/type rejection before import parsing implemented
+- [x] Oversized import rejection covered by automated acceptance test
+- [x] Staged import validation and atomic commit implemented
+- [x] Singleton-per-case import uniqueness validation implemented
+- [x] Duplicate singleton import rejection covered by automated acceptance test
+- [x] Duplicate primary-key import rejection covered by automated acceptance test
+- [x] Unknown entity-store import rejection covered by automated acceptance test
+- [x] Import chooser supports immediate same-file retry after attempts
+- [x] Same-file import retry after commit is covered by automated acceptance test
+- [x] Same-file retry after failed import validation is covered by automated acceptance test
+- [x] Markdown brief export implemented
+- [x] Print-safe brief flow implemented
+- [x] Governance review + pack hooks wedge implemented
+- [x] Pack hooks are idempotent per case + hook type (upsert, no duplicate growth)
+- [x] Pack hook compound index + integrity dedupe repair implemented
+- [x] Integrity repair and local reset recovery paths implemented
+- [x] Integrity repair avoids zero-removal recovery log bloat
+- [x] Integrity repair dedupes singleton-per-case records
+- [x] Cache reset and SW update detection implemented
+- [x] Storage quota signaling implemented
+- [x] OPFS export artifact persistence implemented (where browser supports OPFS)
+- [x] Regression verify script implemented and passing
+- [x] One-command RC pipeline (`npm run rc:full`) implemented
+- [x] GitHub Pages manual upload build (`dist/`) implemented
+- [x] Backward import compatibility (schema v1 -> v2) implemented
+- [x] Automated accessibility sweep (labels/landmarks/keyboard)
+- [x] Automated browser acceptance tests
+- [x] Acceptance asserts RC output contains no FAIL gates
+- [x] RC check enforces touch manipulation across all buttons
+- [x] Print brief visual regression baseline
+- [x] Pre-reset backup safeguard implemented

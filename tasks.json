@@ -1,0 +1,211 @@
+{
+  "project": "ledger-suite",
+  "version": "0.1.41",
+  "tasks": [
+    {
+      "id": "core-001",
+      "title": "Workspace and case file management",
+      "status": "done"
+    },
+    {
+      "id": "core-002",
+      "title": "Evidence, assumption, and option capture",
+      "status": "done"
+    },
+    {
+      "id": "core-003",
+      "title": "Deterministic JSON export/import staging",
+      "status": "done"
+    },
+    {
+      "id": "core-004",
+      "title": "Recovery flows (integrity repair, reset, cache clear)",
+      "status": "done"
+    },
+    {
+      "id": "core-005",
+      "title": "Print-safe brief flow",
+      "status": "done"
+    },
+    {
+      "id": "core-006",
+      "title": "Automated browser acceptance suite",
+      "status": "done"
+    },
+    {
+      "id": "core-007",
+      "title": "GitHub Pages manual upload build pipeline",
+      "status": "done"
+    },
+    {
+      "id": "core-008",
+      "title": "Snapshot integrity checksum validation",
+      "status": "done"
+    },
+    {
+      "id": "core-009",
+      "title": "Automated accessibility sweep (keyboard + labels + landmarks)",
+      "status": "done"
+    },
+    {
+      "id": "core-010",
+      "title": "Print brief visual regression baseline",
+      "status": "done"
+    },
+    {
+      "id": "core-011",
+      "title": "Pre-reset automatic backup safeguard",
+      "status": "done"
+    },
+    {
+      "id": "core-012",
+      "title": "ZIP snapshot export/import support",
+      "status": "done"
+    },
+    {
+      "id": "core-013",
+      "title": "Governance review and pack hook wedge",
+      "status": "done"
+    },
+    {
+      "id": "core-014",
+      "title": "OPFS artifact persistence for exports",
+      "status": "done"
+    },
+    {
+      "id": "core-015",
+      "title": "One-command RC validation and pages build pipeline",
+      "status": "done"
+    },
+    {
+      "id": "core-016",
+      "title": "Pack hook upsert semantics to prevent duplicate bloat",
+      "status": "done"
+    },
+    {
+      "id": "core-017",
+      "title": "Version sync enforcement across package, tasks, and quality ledgers",
+      "status": "done"
+    },
+    {
+      "id": "core-018",
+      "title": "Pre-read import file-size/type rejection hardening",
+      "status": "done"
+    },
+    {
+      "id": "core-019",
+      "title": "Acceptance regression for oversized import rejection",
+      "status": "done"
+    },
+    {
+      "id": "core-020",
+      "title": "Pack hook compound index upgrade and duplicate repair hardening",
+      "status": "done"
+    },
+    {
+      "id": "core-021",
+      "title": "Verify gate enforces migration note entry for current version",
+      "status": "done"
+    },
+    {
+      "id": "core-022",
+      "title": "Acceptance gate requires zero FAIL entries in RC output",
+      "status": "done"
+    },
+    {
+      "id": "core-023",
+      "title": "RC check validates touch manipulation on all buttons",
+      "status": "done"
+    },
+    {
+      "id": "core-024",
+      "title": "Prevent zero-removal integrity-repair log bloat",
+      "status": "done"
+    },
+    {
+      "id": "core-025",
+      "title": "Import validation rejects duplicate singleton case records before commit",
+      "status": "done"
+    },
+    {
+      "id": "core-026",
+      "title": "Acceptance regression for duplicate singleton import rejection",
+      "status": "done"
+    },
+    {
+      "id": "core-027",
+      "title": "ZIP import rejects unsafe entry paths and has automated regression coverage",
+      "status": "done"
+    },
+    {
+      "id": "core-028",
+      "title": "Import validation rejects duplicate primary keys with QA regression coverage",
+      "status": "done"
+    },
+    {
+      "id": "core-029",
+      "title": "Integrity repair dedupes singleton-per-case records",
+      "status": "done"
+    },
+    {
+      "id": "core-030",
+      "title": "Import chooser resets after attempts to allow immediate same-file retry",
+      "status": "done"
+    },
+    {
+      "id": "core-031",
+      "title": "Acceptance regression covers same-file import retry after commit",
+      "status": "done"
+    },
+    {
+      "id": "core-032",
+      "title": "Deterministic case-bundle ordering for render/export/print consistency",
+      "status": "done"
+    },
+    {
+      "id": "core-033",
+      "title": "Parallelized case-bundle IndexedDB reads for lower UI latency",
+      "status": "done"
+    },
+    {
+      "id": "core-034",
+      "title": "Acceptance regression covers same-file retry after failed import validation",
+      "status": "done"
+    },
+    {
+      "id": "core-035",
+      "title": "Verify gate enforces unique task IDs in tasks ledger",
+      "status": "done"
+    },
+    {
+      "id": "core-036",
+      "title": "Verify gate enforces task ledger schema validity",
+      "status": "done"
+    },
+    {
+      "id": "core-037",
+      "title": "Verify gate enforces quality ledger schema validity",
+      "status": "done"
+    },
+    {
+      "id": "core-038",
+      "title": "Import validation rejects unknown entity stores with acceptance coverage",
+      "status": "done"
+    },
+    {
+      "id": "core-039",
+      "title": "Verify gate enforces latest migration note heading matches current version",
+      "status": "done"
+    },
+    {
+      "id": "core-040",
+      "title": "Verify gate enforces descending semver order in migration headings",
+      "status": "done"
+    },
+    {
+      "id": "core-041",
+      "title": "Guided inline UX copy and responsive layout hardening for first-time users",
+      "status": "done"
+    }
+  ]
+}

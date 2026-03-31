@@ -1,0 +1,21 @@
+# Ledger Suite LLM Context
+
+Ledger Suite is an offline-first decision-analysis PWA focused on managerial judgment.
+
+## Active Wedge
+- Decision Memo
+- Case Analysis
+- Governance Review baseline scaffolding
+
+## Implemented Core
+- Workspace/case local model in IndexedDB (schema v2)
+- Evidence, assumptions, options, matrix, decision, and outcome records
+- Deterministic JSON snapshot export and staged import commit
+- Print-safe brief generation
+- Recovery flows: integrity repair, local reset, cache reset
+- Service worker update detection and apply-update path
+
+## Constraints
+- No mandatory backend
+- Portable artifacts
+- Explicit assumptions and traceability
