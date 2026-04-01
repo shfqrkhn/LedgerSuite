@@ -438,12 +438,6 @@ button:disabled {
   background: var(--surface);
   border-radius: var(--radius-md);
   border: 1px solid var(--surface-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  position: sticky;
-  bottom: 24px;
-  z-index: 10;
-  box-shadow: var(--shadow-lg);
   margin-top: 24px;
 }
 
