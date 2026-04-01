@@ -51,4 +51,4 @@ Because all your workspaces live locally on your browser:
 
 ---
 
-*Ledger Suite v0.1.42 - Fast. Private. Sovereign.*
+*Ledger Suite v0.1.43 - Fast. Private. Sovereign.*
