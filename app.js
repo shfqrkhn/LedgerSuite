@@ -1,4 +1,4 @@
-const VERSION = "0.1.44";
+const VERSION = "0.1.45";
 const DB_NAME = "ledger-suite";
 const DB_VERSION = 3;
 const SCHEMA_VERSION = 2;
@@ -1432,7 +1432,7 @@ async function runRcCheck() {
   results.push({ name: "Import validation", pass: importShapeValid });
 
   const buttons = Array.from(document.querySelectorAll("button"));
-  const interactables = Array.from(document.querySelectorAll("button, a, summary"));
+  const interactables = Array.from(document.querySelectorAll("button, a, summary, input, textarea, select"));
   const allInteractablesManipulation =
     interactables.length > 0 &&
     interactables.every((el) => window.getComputedStyle(el).touchAction.includes("manipulation"));
