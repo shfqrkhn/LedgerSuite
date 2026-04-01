@@ -230,7 +230,7 @@
         </summary>
         <div class="panel-content">
           <p class="inline-help">Use these controls if local data is inconsistent, storage is full, or an update is pending.</p>
-        <p id="storage-health">Storage usage: checking...</p>
+        <p id="storage-health" aria-live="polite">Storage usage: checking...</p>
         <div class="actions">
           <button type="button" id="run-repair-btn" class="secondary">Run Integrity Repair</button>
           <button type="button" id="reset-local-btn" class="secondary">Reset Local Data</button>
@@ -238,7 +238,7 @@
           <button type="button" id="run-rc-check-btn">Run RC Check</button>
           <button type="button" id="apply-update-btn" disabled>Apply Update</button>
         </div>
-        <p id="rc-check-output" class="status"></p>
+        <p id="rc-check-output" class="status" aria-live="polite"></p>
         </div>
       </details>
 
