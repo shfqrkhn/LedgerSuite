@@ -1,4 +1,4 @@
-const VERSION = "0.1.41";
+const VERSION = "0.1.43";
 const DB_NAME = "ledger-suite";
 const DB_VERSION = 3;
 const SCHEMA_VERSION = 2;
@@ -1432,10 +1432,11 @@ async function runRcCheck() {
   results.push({ name: "Import validation", pass: importShapeValid });
 
   const buttons = Array.from(document.querySelectorAll("button"));
-  const allButtonsManipulation =
-    buttons.length > 0 &&
-    buttons.every((button) => window.getComputedStyle(button).touchAction.includes("manipulation"));
-  results.push({ name: "Mobile touch manipulation", pass: allButtonsManipulation });
+  const interactables = Array.from(document.querySelectorAll("button, a, summary"));
+  const allInteractablesManipulation =
+    interactables.length > 0 &&
+    interactables.every((el) => window.getComputedStyle(el).touchAction.includes("manipulation"));
+  results.push({ name: "Mobile touch manipulation", pass: allInteractablesManipulation });
 
   const meta = await getRecord("meta", "schema");
   results.push({ name: "Schema version pinned", pass: Number(meta?.schemaVersion) === SCHEMA_VERSION });

@@ -293,6 +293,14 @@ select,
 button {
   font-family: inherit;
   font-size: 1rem;
+}
+
+button,
+a,
+summary,
+input,
+textarea,
+select {
   touch-action: manipulation;
 }
 
