@@ -1,4 +1,4 @@
-const CACHE_NAME = "ledger-suite-shell-v0.1.44";
+const CACHE_NAME = "ledger-suite-shell-v0.1.45";
 const APP_SHELL = [
   "./",
   "./index.html",
