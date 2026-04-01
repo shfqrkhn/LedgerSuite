@@ -1,4 +1,4 @@
-const VERSION = "0.1.43";
+const VERSION = "0.1.44";
 const DB_NAME = "ledger-suite";
 const DB_VERSION = 3;
 const SCHEMA_VERSION = 2;
