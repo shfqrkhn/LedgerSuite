@@ -1,7 +1,7 @@
 # Release Checklist (RC)
 
 - [x] App shell boots offline after first load
-- [x] Icons loaded from `.resources`
+- [x] Icons loaded from `resources`
 - [x] Version sync (`package.json`, `README.md`, UI footer)
 - [x] Version sync ledger enforcement (`tasks.json`, `quality.json`)
 - [x] Verify gate enforces unique task IDs in `tasks.json`

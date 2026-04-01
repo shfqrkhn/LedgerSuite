@@ -1,12 +1,12 @@
 # Ledger Suite 
 
-<img src=".resources/Ledger_128.png" alt="Ledger Suite Logo" align="right" width="128" />
+<img src="resources/Ledger_128.png" alt="Ledger Suite Logo" align="right" width="128" />
 
 **Ledger Suite** is an offline-first managerial judgment and operational analysis workspace. It's designed for professionals, leaders, and operators who need a secure, fully private environment to draft decision memos, track evidence, weigh assumptions, and formulate strategies without worrying about data leaving their device.
 
 🎉 **Try it out now:** Just open the application URL in your modern browser! 
 
-![Ledger Suite Screenshot](.resources/screenshot.png)
+![Ledger Suite Screenshot](resources/screenshot.png)
 
 ---
 
