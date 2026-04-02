@@ -1,2 +1,2 @@
-## 2024-05-18 - [Palette Mode] - [Identified missing touch-action: manipulation on summary and anchor tags, preventing interface breakdown on rapid interaction.]
-**Protocol:** [All clickable elements including summary and anchors must have touch-action: manipulation.]
+## 2026-04-02 - [Sentinel Mode] - [Insight]
+**Protocol:** Avoid innerHTML entirely to enforce strict defense-in-depth against XSS injection; rely solely on pure DOM APIs (`document.createElement`, `document.createTextNode`, `replaceChildren`).

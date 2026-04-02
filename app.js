@@ -1,4 +1,4 @@
-const VERSION = "0.1.45";
+const VERSION = "0.1.46";
 const DB_NAME = "ledger-suite";
 const DB_VERSION = 3;
 const SCHEMA_VERSION = 2;
@@ -411,7 +411,7 @@ async function runIntegrityRepair() {
 }
 
 function setSelectOptions(select, rows, labelKey) {
-  select.innerHTML = "";
+  select.replaceChildren();
   for (const row of rows) {
     const opt = document.createElement("option");
     opt.value = row.id;
@@ -433,7 +433,7 @@ function getMemoPayload() {
 }
 
 function renderList(listEl, items, toLine) {
-  listEl.innerHTML = "";
+  listEl.replaceChildren();
   for (const item of items) {
     const li = document.createElement("li");
     li.textContent = toLine(item);
@@ -525,46 +525,113 @@ function escapeHtml(text) {
     .replaceAll(">", "&gt;");
 }
 
+function createTextNode(text) {
+  return document.createTextNode(text || "(not set)");
+}
+
+function createElementWithText(tag, text) {
+  const el = document.createElement(tag);
+  el.appendChild(createTextNode(text));
+  return el;
+}
+
+function createHtmlList(items, formatFn) {
+  const ul = document.createElement("ul");
+  if (!items || items.length === 0) {
+    ul.appendChild(createElementWithText("li", "(none)"));
+    return ul;
+  }
+  for (const item of items) {
+    const li = document.createElement("li");
+    li.textContent = formatFn(item);
+    ul.appendChild(li);
+  }
+  return ul;
+}
+
 function renderPrintableBrief(bundle) {
+  elements.printBrief.replaceChildren();
+
   if (!bundle || !bundle.caseFile) {
-    elements.printBrief.innerHTML = "<h2>No case selected</h2>";
+    elements.printBrief.appendChild(createElementWithText("h2", "No case selected"));
     return;
   }
 
-  const evidenceItems = bundle.evidence.map((row) => `<li>${escapeHtml(row.kind)}: ${escapeHtml(row.citation)}</li>`).join("");
-  const assumptions = bundle.assumptions.map((row) => `<li>${escapeHtml(row.statement)} (${escapeHtml(row.confidence)}%)</li>`).join("");
-  const options = bundle.options.map((row) => `<li>${escapeHtml(row.name)} [${escapeHtml(row.score)}/10] ${escapeHtml(row.tradeoff)}</li>`).join("");
-  const hooks = (bundle.packHooks || [])
-    .map((row) => `<li>${escapeHtml(row.hookType)}: ${escapeHtml(row.contractNote || "")} (${escapeHtml(row.status || "ready")})</li>`)
-    .join("");
+  const container = document.createDocumentFragment();
 
-  elements.printBrief.innerHTML = `
-    <h2>${escapeHtml(bundle.caseFile.title)}</h2>
-    <h3>Core Question</h3>
-    <p>${escapeHtml(bundle.caseFile.question || "(not set)")}</p>
-    <h3>Evidence Summary</h3>
-    <p>${escapeHtml(bundle.caseFile.evidenceSummary || "(not set)")}</p>
-    <h3>Assumption Summary</h3>
-    <p>${escapeHtml(bundle.caseFile.assumptionSummary || "(not set)")}</p>
-    <h3>Decision</h3>
-    <p><strong>Choice:</strong> ${escapeHtml(bundle.decision?.choice || bundle.caseFile.choice || "(not set)")}</p>
-    <p><strong>Rationale:</strong> ${escapeHtml(bundle.decision?.rationale || bundle.caseFile.rationale || "(not set)")}</p>
-    <h3>Evidence Items</h3>
-    <ul>${evidenceItems || "<li>(none)</li>"}</ul>
-    <h3>Assumptions</h3>
-    <ul>${assumptions || "<li>(none)</li>"}</ul>
-    <h3>Option Set</h3>
-    <ul>${options || "<li>(none)</li>"}</ul>
-    <h3>Outcome Review</h3>
-    <p><strong>Expected vs Actual:</strong> ${escapeHtml(bundle.outcome?.expectedVsActual || "(not set)")}</p>
-    <p><strong>Lessons:</strong> ${escapeHtml(bundle.outcome?.lessons || "(not set)")}</p>
-    <h3>Governance Review</h3>
-    <p><strong>Accountability:</strong> ${escapeHtml(bundle.governance?.accountability || "(not set)")}</p>
-    <p><strong>Compliance:</strong> ${escapeHtml(bundle.governance?.compliance || "(not set)")}</p>
-    <p><strong>Risk Note:</strong> ${escapeHtml(bundle.governance?.riskNote || "(not set)")}</p>
-    <h3>Pack Hooks</h3>
-    <ul>${hooks || "<li>(none)</li>"}</ul>
-  `;
+  container.appendChild(createElementWithText("h2", bundle.caseFile.title || "(not set)"));
+  container.appendChild(createElementWithText("h3", "Core Question"));
+  container.appendChild(createElementWithText("p", bundle.caseFile.question));
+  container.appendChild(createElementWithText("h3", "Evidence Summary"));
+  container.appendChild(createElementWithText("p", bundle.caseFile.evidenceSummary));
+  container.appendChild(createElementWithText("h3", "Assumption Summary"));
+  container.appendChild(createElementWithText("p", bundle.caseFile.assumptionSummary));
+
+  container.appendChild(createElementWithText("h3", "Decision"));
+  const pChoice = document.createElement("p");
+  const sChoice = document.createElement("strong");
+  sChoice.textContent = "Choice: ";
+  pChoice.appendChild(sChoice);
+  pChoice.appendChild(createTextNode(bundle.decision?.choice || bundle.caseFile.choice));
+  container.appendChild(pChoice);
+
+  const pRationale = document.createElement("p");
+  const sRationale = document.createElement("strong");
+  sRationale.textContent = "Rationale: ";
+  pRationale.appendChild(sRationale);
+  pRationale.appendChild(createTextNode(bundle.decision?.rationale || bundle.caseFile.rationale));
+  container.appendChild(pRationale);
+
+  container.appendChild(createElementWithText("h3", "Evidence Items"));
+  container.appendChild(createHtmlList(bundle.evidence, (row) => `${row.kind}: ${row.citation}`));
+
+  container.appendChild(createElementWithText("h3", "Assumptions"));
+  container.appendChild(createHtmlList(bundle.assumptions, (row) => `${row.statement} (${row.confidence}%)`));
+
+  container.appendChild(createElementWithText("h3", "Option Set"));
+  container.appendChild(createHtmlList(bundle.options, (row) => `${row.name} [${row.score}/10] ${row.tradeoff}`));
+
+  container.appendChild(createElementWithText("h3", "Outcome Review"));
+  const pExp = document.createElement("p");
+  const sExp = document.createElement("strong");
+  sExp.textContent = "Expected vs Actual: ";
+  pExp.appendChild(sExp);
+  pExp.appendChild(createTextNode(bundle.outcome?.expectedVsActual));
+  container.appendChild(pExp);
+
+  const pLess = document.createElement("p");
+  const sLess = document.createElement("strong");
+  sLess.textContent = "Lessons: ";
+  pLess.appendChild(sLess);
+  pLess.appendChild(createTextNode(bundle.outcome?.lessons));
+  container.appendChild(pLess);
+
+  container.appendChild(createElementWithText("h3", "Governance Review"));
+  const pAcc = document.createElement("p");
+  const sAcc = document.createElement("strong");
+  sAcc.textContent = "Accountability: ";
+  pAcc.appendChild(sAcc);
+  pAcc.appendChild(createTextNode(bundle.governance?.accountability));
+  container.appendChild(pAcc);
+
+  const pComp = document.createElement("p");
+  const sComp = document.createElement("strong");
+  sComp.textContent = "Compliance: ";
+  pComp.appendChild(sComp);
+  pComp.appendChild(createTextNode(bundle.governance?.compliance));
+  container.appendChild(pComp);
+
+  const pRisk = document.createElement("p");
+  const sRisk = document.createElement("strong");
+  sRisk.textContent = "Risk Note: ";
+  pRisk.appendChild(sRisk);
+  pRisk.appendChild(createTextNode(bundle.governance?.riskNote));
+  container.appendChild(pRisk);
+
+  container.appendChild(createElementWithText("h3", "Pack Hooks"));
+  container.appendChild(createHtmlList(bundle.packHooks, (row) => `${row.hookType}: ${row.contractNote || ""} (${row.status || "ready"})`));
+
+  elements.printBrief.appendChild(container);
 }
 
 async function loadCurrentCase() {

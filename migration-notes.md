@@ -1,5 +1,9 @@
 # Migration Notes
 
+## v0.1.46
+- Refactored DOM manipulations to remove innerHTML and rely exclusively on textContent, createTextNode, and createElement for Sentinel Mode.
+- Incremented application version to v0.1.46 across UI, docs, and codebase.
+
 ## v0.1.44
 - Synchronized version files and unified version across all systems according to protocol rules.
 - Prevent version bloat and ensured UI, Package, Docs matches v0.1.44.
